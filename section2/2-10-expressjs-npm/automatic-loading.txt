@@ -1,0 +1,12 @@
+# install nodemon
+npm install -g nodemon
+
+# run the automatic loading with nodemon 
+nodemon <code_name>.js
+
+# If the nodemon cannot be loaded because script execution has been disabled on the system
+# First step
+Get-ExecutionPolicy
+
+# Second step
+Set-ExecutionPolicy Unrestricted
