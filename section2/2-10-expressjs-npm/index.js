@@ -9,12 +9,34 @@ app.get("/", function(request, response)
 
 app.get("/blog", function(request, response)
 {
-    response.send("<h1>Welcome to my blog!</h1>")
+    response.send("<h1>Welcome to my blog!</h1>");
 });
 
 app.get("/channel/youtube", function(request, response)
 {
-    response.send("<h1>Welcome to my youtube channel!</h1>")
+    response.send("<h1>Welcome to my youtube channel!</h1>");
+});
+
+// route with optional parameters
+app.get("/blog/:article?", function(request, response)
+{
+    let article = request.params.article;
+    if(article)
+    {
+        response.send(`<h1>Article: ${article}!</h1>`);
+    }
+    else
+    {
+        response.send(`<h1>Welcome to my blog!</h1>`);
+    }
+});
+
+// route with mandatory parameters
+app.get("/hello/:name/:company", function(request, response)
+{
+    let name = request.params.name;
+    let company = request.params.company;
+    response.send(`<h1>Hello ${name}, company: ${company}</h1>`);
 });
 
 // Starting a server
@@ -26,6 +48,6 @@ app.listen(4000, function(error)
     }
     else
     {
-        console.log("Server started successfully!")
+        console.log("Server started successfully!");
     }
 });
