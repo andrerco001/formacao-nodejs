@@ -3,7 +3,8 @@ const express = require("express");
 const app = express();
 const port = 4000;
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); // Express will use EJS with view engine
+app.use(express.static('public')); // static files : img, css, etc
 
 app.get("/:name/:lang", (req, res) => 
 {
