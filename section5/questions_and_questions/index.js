@@ -11,6 +11,11 @@ app.get("/", (req, res) =>
     res.render("index");
 });
 
+app.get("/questions", (req, res)=> 
+{
+    res.render("questions");
+});
+
 app.listen(port, (error) => 
 {
     if(error)
