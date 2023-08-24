@@ -20,6 +20,12 @@
     <% } else { %>
         <h3 style="color: green;">No error message!</h3>
     <% } %>
+
+    <% products.forEach(function(product) { %>
+        <hr>
+        <h3>Product: <%= product.name %></h3>
+        <h4>Price: $ <%= product.price %></h4>
+    <% }) %>
         
 </body>
 </html>

@@ -11,13 +11,23 @@ app.get("/:name/:lang", (req, res) =>
     let lang = req.params.lang;
     let showMessage = false;
 
+    let products = [
+        {name: "Coca-Cola", price: 2.25},
+        {name: "7Up", price: 2.10},
+        {name: "Crush", price: 1.75},
+        {name: "Redbull", price: 6.50},
+        {name: "Orange juice", price: 3.45},
+        {name: "Chocolate", price: 5.25}
+    ];
+
     res.render("index", 
     {
         name: name,
         lang: lang,
         company: "Questions&&Answers Solutions",
         customers: 8000,
-        msg: showMessage
+        msg: showMessage,
+        products: products
     });
 });
 
