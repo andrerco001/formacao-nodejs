@@ -4,9 +4,15 @@ const port = 4000;
 
 app.set('view engine', 'ejs');
 
-app.get("/", (req, res) => 
+app.get("/:name/:lang", (req, res) => 
 {
-    res.render("index");
+    res.render("index", 
+    {
+        name: req.params.name,
+        lang: req.params.lang,
+        company: "Questions&&Answers Solutions",
+        customers: 8000
+    });
 });
 
 app.listen(port, (error) => 
