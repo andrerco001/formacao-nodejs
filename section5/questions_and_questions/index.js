@@ -71,6 +71,21 @@ app.post("/savequestion", (req, res)=>
     });
 });
 
+app.post("/response", (req, res)=>
+{
+    let body = req.body.body;
+    let questionId = req.body.questionId;
+
+    Answer.create(
+    {
+        body: body,
+        questionId: questionId
+    }).then(()=> 
+    {
+        res.redirect("/question/" + questionId);
+    });
+});
+
 // Server launcher
 app.listen(serverPort, (error) => 
 {

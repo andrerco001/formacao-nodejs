@@ -6,11 +6,11 @@
         <h4><%= question.title %></h3>
         <p><%= question.description %></p>
         <hr>
-        <form>
+        <form method="POST" action="/response">
             <h3>Answer</h3>
             <label>Response</label>
             <textarea placeholder="Write your answer" class="form-control" name="body"></textarea><br>            
-            <input type="hidden" name="question" value="<%= question.id %>">
+            <input type="hidden" name="questionId" value="<%= question.id %>">
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
