@@ -4,9 +4,9 @@ const app = express();
 const bodyParser = require("body-parser");
 const serverPort = 4000;
 const connection = require("./database/database");
-const questionModel = require("./database/Question");
+const Question = require("./database/Question");
 
-// Database
+// Database connection
 connection.authenticate().then(()=>{ console.log("Database successfully connected!")} ).catch((error)=>{ console.log(error) });
 
 app.set('view engine', 'ejs'); // Express will use EJS with view engine
@@ -29,7 +29,12 @@ app.post("/savequestion", (req, res)=>
 {
     let title = req.body.title;
     let description = req.body.description;
-    res.send("<p>Form received!<br>Title: " + title + "<br>Description: " + description + "</p>");
+    Question.create({
+        title: title,
+        description: description
+    }).then(()=>{
+        res.redirect("/");
+    });
 });
 
 // Server launcher
