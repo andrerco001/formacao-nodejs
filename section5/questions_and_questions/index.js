@@ -16,6 +16,11 @@ app.get("/questions", (req, res)=>
     res.render("questions");
 });
 
+app.post("/savequestion", (req, res)=> 
+{
+    res.send("Form received");
+});
+
 app.listen(port, (error) => 
 {
     if(error)
