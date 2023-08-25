@@ -13,6 +13,16 @@
             <input type="hidden" name="questionId" value="<%= question.id %>">
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <hr>
+        <h3>Responses</h3>
+        <% responses.forEach(response => {%>
+            <br>
+            <div class="card">
+                <div class="card-body">
+                    <%= response.body %><br>
+                </div>
+            </div>
+        <% }) %>
     </div>
 </body>
 <%- include("./partials/footer.ejs") %>

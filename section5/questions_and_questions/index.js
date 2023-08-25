@@ -41,8 +41,17 @@ app.get("/question/:id", (req, res) =>
     {
         if(question != undefined) // Question found
         {
-            res.render("question", {
-                question: question
+            Answer.findAll(
+            {
+                where: {questionId: question.id},
+                order: [ ['id', 'DESC'] ]
+            }).then((responses) =>
+            {
+                res.render("question", 
+                {
+                    question: question,
+                    responses: responses
+                });
             });
         }
         else // Question not found
