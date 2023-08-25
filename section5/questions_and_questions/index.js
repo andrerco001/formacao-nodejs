@@ -7,7 +7,7 @@ const connection = require("./database/database");
 const Question = require("./database/Question");
 
 // Database connection
-connection.authenticate().then(()=>{ console.log("Database successfully connected!")} ).catch((error)=>{ console.log(error) });
+connection.authenticate().then(()=>{ console.log("Connection has been established successfully!")} ).catch((error)=>{ console.log("Unable to connect to the database:", error) });
 
 app.set('view engine', 'ejs'); // Express will use EJS with view engine
 app.use(express.static('public')); // static files : img, css, etc
@@ -18,12 +18,13 @@ app.use(bodyParser.json()); // Receive form information in JSON format
 // list all questions
 app.get("/", (req, res) => 
 {
-    Question.findAll({raw: true}).then((questions)=>
+    Question.findAll({raw: true, order: [
+        ['id', 'DESC']
+    ]}).then((questions)=>
     {
         res.render("index", 
         {
             questions: questions
-
         });
     });
 });

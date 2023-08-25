@@ -2,8 +2,21 @@
 <body>
     <%- include("./partials/navbar.ejs") %>
     <div class="container">
-        <br>
-        <h1>Questions&&Answers</h1>
+        <hr>
+        <h1>Questions</h1>
+        <a href="/questions" class="btn btn-primary">Make a question</a>
+        <hr>
+        <% questions.forEach(question => { %>
+            <br>
+            <div class="card">
+                <div class="card-body">
+                    <h3><%= question.title %></h3>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary">Answer</button>
+                </div>
+            </div>
+        <% }) %>
     </div>
 </body>
 <%- include("./partials/footer.ejs") %>
