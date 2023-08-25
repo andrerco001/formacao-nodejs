@@ -29,6 +29,26 @@ app.get("/", (req, res) =>
     });
 });
 
+// get question by id
+app.get("/question/:id", (req, res) =>
+{
+    let id = req.params.id;
+    Question.findOne(
+    {
+        where: {id: id}
+    }).then((question) => 
+    {
+        if(question != undefined) // Question found
+        {
+            res.render("question");
+        }
+        else // Question not found
+        {
+            res.redirect("/");
+        }
+    });
+});
+
 // make a question
 app.get("/questions", (req, res)=> 
 {
