@@ -40,7 +40,9 @@ app.get("/question/:id", (req, res) =>
     {
         if(question != undefined) // Question found
         {
-            res.render("question");
+            res.render("question", {
+                question: question
+            });
         }
         else // Question not found
         {
