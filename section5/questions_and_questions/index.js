@@ -15,16 +15,26 @@ app.use(bodyParser.urlencoded({extended:false})); // Get information from the fo
 app.use(bodyParser.json()); // Receive form information in JSON format
 
 // Routes
+// list all questions
 app.get("/", (req, res) => 
 {
-    res.render("index");
+    Question.findAll({raw: true}).then((questions)=>
+    {
+        res.render("index", 
+        {
+            questions: questions
+
+        });
+    });
 });
 
+// make a question
 app.get("/questions", (req, res)=> 
 {
     res.render("questions");
 });
 
+// save
 app.post("/savequestion", (req, res)=> 
 {
     let title = req.body.title;
