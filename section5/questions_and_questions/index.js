@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const serverPort = 4000;
 const connection = require("./database/database");
+const questionModel = require("./database/Question");
 
 // Database
 connection.authenticate().then(()=>{ console.log("Database successfully connected!")} ).catch((error)=>{ console.log(error) });
