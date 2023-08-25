@@ -1,12 +1,15 @@
 const { Sequelize } = require("sequelize");
 const connection = require("./database");
 
-const Question = connection.define('question',{
-    title: {
+const Question = connection.define('question',
+{
+    title: 
+    {
         type: Sequelize.STRING,
         allowNull: false
     },
-    description: {
+    description: 
+    {
         type: Sequelize.TEXT,
         allowNull: false
     }

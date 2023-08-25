@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const serverPort = 4000;
 const connection = require("./database/database");
 const Question = require("./database/Question");
+const Answer = require("./database/Answer");
 
 // Database connection
 connection.authenticate().then(()=>{ console.log("Connection has been established successfully!")} ).catch((error)=>{ console.log("Unable to connect to the database:", error) });
