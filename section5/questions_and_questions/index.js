@@ -2,7 +2,11 @@ const { name } = require("ejs");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const port = 4000;
+const serverPort = 4000;
+const connection = require("./database/database");
+
+// Database
+connection.authenticate().then(()=>{ console.log("Database successfully connected!")} ).catch((error)=>{ console.log(error) });
 
 app.set('view engine', 'ejs'); // Express will use EJS with view engine
 app.use(express.static('public')); // static files : img, css, etc
@@ -28,7 +32,7 @@ app.post("/savequestion", (req, res)=>
 });
 
 // Server launcher
-app.listen(port, (error) => 
+app.listen(serverPort, (error) => 
 {
     if(error)
     {
