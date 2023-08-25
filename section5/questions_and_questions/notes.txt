@@ -1,0 +1,18 @@
+# start npm packege.json
+npm init
+
+# install express
+npm install express --save
+
+# install nodemon
+npm install -g nodemon
+
+# install ejs
+npm install ejs
+
+# install body-parser
+npm install body-parser --save
+
+# install sequelize ORM and mysql 2
+npm install --save sequelize
+npm install --save mysql2
