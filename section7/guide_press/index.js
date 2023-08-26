@@ -9,9 +9,12 @@ const port = 4000;
 // view engine
 app.set('view engine', 'ejs');
 
+// static files - public - css - img - js
+app.use(express.static('public'));
+
 // body parser
-app.set(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json);
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
 
 // routes
 app.get("/", (req, res) =>
