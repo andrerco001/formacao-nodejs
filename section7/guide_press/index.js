@@ -2,9 +2,13 @@ const ejs = require("ejs");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const connection = require("./database/connection");
 
 // Server port
 const port = 4000;
+
+// database connection
+connection.authenticate().then(() => { console.log("Connection has been established successfully!") }).catch((error) => { console.log("Unable to connect to the database:", error) });
 
 // view engine
 app.set('view engine', 'ejs');
