@@ -46,7 +46,7 @@ app.get("/hello/:name/:company", function(request, response)
 // query parameters
 app.get("/channel/youtube", function(request, response)
 {
-    let query = request.query["canal"];
+    let query = request.query["channel"];
     if(query)
     {
         response.send(`<h1>Welcome to my youtube channel: ${query}</h1>`);
