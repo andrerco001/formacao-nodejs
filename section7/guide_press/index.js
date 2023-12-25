@@ -1,3 +1,4 @@
+// import section
 const ejs = require("ejs");
 const express = require("express");
 const app = express();
@@ -8,7 +9,7 @@ const connection = require("./database/connection");
 const port = 4000;
 
 // database connection
-connection.authenticate().then(() => { console.log("Connection has been established successfully!") }).catch((error) => { console.log("Unable to connect to the database:", error) });
+connection.authenticate().then(() => { console.log("Database connection has been established successfully!") }).catch((error) => { console.log("Unable to connect to the database:", error) });
 
 // view engine
 app.set('view engine', 'ejs');
