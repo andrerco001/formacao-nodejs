@@ -11,5 +11,6 @@ const Category = connection.define("categories", {
     }
 });
 
-module.exports = Category;
+// Category.sync({force: true}); // Command to force models to synchronize with the database
 
+module.exports = Category;

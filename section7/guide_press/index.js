@@ -9,6 +9,10 @@ const connection = require("./database/connection");
 const categoriesController = require("./categories/CategoriesController");
 const articlesController = require("./articles/ArticlesController");
 
+// import models
+const articles = require("./articles/Article");
+const categories = require("./categories/Category");
+
 // Server port
 const port = 4000;
 
