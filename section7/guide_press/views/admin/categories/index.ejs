@@ -14,12 +14,14 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>01</td>
-                <td>Web Development</td>
-                <td>web-development</td>
-                <td>Actions</td>
-            </tr>
+            <% categories.forEach(category => { %>
+                <tr>
+                    <td><%= category.id %></td>
+                    <td><%= category.title %></td>
+                    <td><%= category.slug %></td>
+                    <td>Update | Delete</td>
+                </tr>
+            <% }) %>
         </tbody>
     </table>
 </div>
