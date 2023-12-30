@@ -40,6 +40,23 @@ app.get("/", (req, res) => {
     });
 });
 
+app.get("/:slug", (req, res) => {
+    let slug = req.body.slug;
+    Article.findOne({
+        where: {
+            slug: slug
+        }
+    }).then(article => {
+        if (article != undefined) {
+            res.render("/article", {article: article});
+        } else {
+            res.redirect("/");
+        }
+    }).catch(error => {
+        res.redirect("/");
+    })
+});
+
 // server launch
 app.listen(port, (error) => 
 {
