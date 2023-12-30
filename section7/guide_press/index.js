@@ -13,6 +13,7 @@ const articlesController = require("./articles/ArticlesController");
 const article = require("./articles/Article");
 const category = require("./categories/Category");
 const Article = require("./articles/Article");
+const Category = require("./categories/Category");
 
 // Server port
 const port = 4000;
@@ -40,7 +41,9 @@ app.get("/", (req, res) => {
             ['id', 'DESC']
         ]
     }).then(articles => {
-        res.render("index", {articles: articles});
+        Category.findAll().then(categories => {
+            res.render("index", {articles: articles, categories: categories});
+        });
     });
 });
 
@@ -52,7 +55,9 @@ app.get("/:slug", (req, res) => {
         }
     }).then(article => {
         if (article != undefined) {
-            res.render("article", {article: article});
+            Category.findAll().then(categories => {
+                res.render("article", {article: article, categories: categories});
+            });
         } else {
             res.redirect("/");
         }
