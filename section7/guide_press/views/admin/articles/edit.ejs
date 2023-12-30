@@ -8,7 +8,7 @@
         </div>
         <div class="card-body">
             <form method="POST" action="/articles/save">
-                <input class="form-control" type="text" name="title" placeholder="Set the article title"><br>
+                <input class="form-control" type="text" name="title" placeholder="Set the article title" value="<%= article.title %>"><br>
                 <textarea class="form-control" placeholder="Write the article here" name="body" id="article"></textarea><br>
                 <label>Category</label>
                 <select class="form-control" name="category">
@@ -21,6 +21,9 @@
             </form>
         </div>
     </div>
+    <div id="content" style="display: none;">
+        <%- article.body %>
+    </div>
 </div>
 <%- include("../../partials/footer.ejs") %>
 <script src="/tinymce/tinymce.min.js"></script>
@@ -30,6 +33,9 @@
         selector: '#article',
         plugins: [
             'advlist autolink link image lists print preview hr searchreplace wordcount fullscreen insertdatetime media save table paste emoticons'
-        ] 
+        ],
+        init_instance_callback: () => {
+            tinymce.get("article").setContent($("#content").html())
+        } 
     })
 </script>
