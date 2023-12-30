@@ -8,12 +8,12 @@ const connection = require("./database/connection");
 // import controllers
 const categoriesController = require("./categories/CategoriesController");
 const articlesController = require("./articles/ArticlesController");
+const usersController = require("./users/UsersController");
 
 // import models
-const article = require("./articles/Article");
-const category = require("./categories/Category");
 const Article = require("./articles/Article");
 const Category = require("./categories/Category");
+const User = require("./users/User");
 
 // Server port
 const port = 4000;
@@ -34,6 +34,7 @@ app.use(bodyParser.json());
 // routes
 app.use("/", categoriesController);
 app.use("/", articlesController);
+app.use("/", usersController);
 
 app.get("/", (req, res) => {
     Article.findAll({
