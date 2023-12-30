@@ -12,6 +12,7 @@ const articlesController = require("./articles/ArticlesController");
 // import models
 const article = require("./articles/Article");
 const category = require("./categories/Category");
+const Article = require("./articles/Article");
 
 // Server port
 const port = 4000;
@@ -33,9 +34,10 @@ app.use(bodyParser.json());
 app.use("/", categoriesController);
 app.use("/", articlesController);
 
-app.get("/", (req, res) =>
-{
-    res.render("index");
+app.get("/", (req, res) => {
+    Article.findAll().then(articles => {
+        res.render("index", {articles: articles});
+    });
 });
 
 // server launch
