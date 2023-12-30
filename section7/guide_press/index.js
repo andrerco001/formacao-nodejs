@@ -41,14 +41,14 @@ app.get("/", (req, res) => {
 });
 
 app.get("/:slug", (req, res) => {
-    let slug = req.body.slug;
+    let slug = req.params.slug;
     Article.findOne({
         where: {
             slug: slug
         }
     }).then(article => {
         if (article != undefined) {
-            res.render("/article", {article: article});
+            res.render("article", {article: article});
         } else {
             res.redirect("/");
         }
