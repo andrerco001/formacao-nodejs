@@ -52,7 +52,6 @@ router.post("/articles/delete", (req, res) => {
     }
 });
 
-// update section
 router.get("/admin/articles/edit/:id", (req, res) => {
     let id = req.params.id;    
     Article.findByPk(id).then(article => {
@@ -68,21 +67,21 @@ router.get("/admin/articles/edit/:id", (req, res) => {
     });
 });
 
-/*
 router.post("/articles/update", (req, res) => {
     let id = req.body.id;
     let title = req.body.title;
     let body = req.body.body;
     let category = req.body.category;
 
-    Article.update({title: title, slug: slugify(title.toLowerCase()), body: body, category: category}, {
+    Article.update({title: title, slug: slugify(title.toLowerCase()), body: body, categoryId: category}, {
         where:{
             id: id
         }
     }).then(() => {
         res.redirect("admin/articles");
+    }).catch(error => {
+        res.redirect("/");
     })
 });
-*/
 
 module.exports = router;

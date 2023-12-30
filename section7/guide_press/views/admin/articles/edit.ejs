@@ -7,7 +7,8 @@
             <h2>Edit article</h2>
         </div>
         <div class="card-body">
-            <form method="POST" action="/articles/save">
+            <form method="POST" action="/articles/update">
+                <input type="hidden" name="id" value="<%= article.id %>">
                 <input class="form-control" type="text" name="title" placeholder="Set the article title" value="<%= article.title %>"><br>
                 <textarea class="form-control" placeholder="Write the article here" name="body" id="article"></textarea><br>
                 <label>Category</label>
